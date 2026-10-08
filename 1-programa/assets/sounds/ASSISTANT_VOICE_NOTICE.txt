@@ -1,0 +1,19 @@
+AVISO DE ATRIBUCIÓN DE LA VOZ DEL ASISTENTE
+
+El archivo assistant_welcome.wav fue generado localmente para Lankdea con la voz
+vits-piper-es_AR-daniela-high. La aplicación distribuye únicamente el audio final:
+no incluye el modelo de voz, no requiere conexión a Internet y no envía texto ni
+datos del cofre a un servicio de síntesis.
+
+Modelo de voz:
+https://huggingface.co/larcanio/piper-voices/tree/main/es/es_AR/daniela/high
+
+Origen indicado por la ficha del modelo:
+- Voz entrenada por larcanio para Piper.
+- Datos de Common Voice (Mozilla), conjunto SLR61.
+- Licencia indicada: Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0).
+
+Licencia:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Aplicación y frase de bienvenida: OscarD0823.

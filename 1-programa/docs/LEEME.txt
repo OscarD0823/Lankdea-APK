@@ -1,0 +1,43 @@
+LANKDEA LOCAL - WINDOWS + ANDROID
+================================
+
+1. Extrae TODO el ZIP en una carpeta. No ejecutes el instalador desde dentro del ZIP.
+2. Abre Manual-Lankdea.html con tu navegador; funciona sin Internet.
+3. En Windows 10/11 x64: abre Lankdea-<version>-Instalador-Windows-x64.exe.
+4. En Android 8+ ARM64: copia Lankdea-<version>-Android-arm64.apk al celular y tócala.
+
+ACTUALIZAR SIN PERDER EL COFRE
+- Primero crea un respaldo cifrado desde Lankdea y conserva la contraseña maestra.
+- Cierra Lankdea antes de actualizar Windows. Instala para el MISMO usuario de Windows.
+- El instalador reemplaza solo el programa, no el cofre del perfil del usuario.
+- En Android instala encima de la versión anterior; NO desinstales ni borres datos.
+- Android exige el mismo identificador y certificado de firma y una versión superior.
+- Si rechaza la actualización por firma distinta, detente y consulta al autor.
+- Si existe AVISO-APK-DE-PRUEBAS.txt, la APK es debug, no una actualización oficial.
+
+DATOS Y SINCRONIZACIÓN
+- No utiliza Firestore, Firebase ni cuentas externas para guardar datos.
+- PC y celular usan la misma contraseña maestra y sincronizan por Wi-Fi privada o USB/ADB.
+- USB requiere depuración autorizada; conectar el cable por sí solo no basta.
+- Mantén ambos cofres abiertos y desbloqueados para sincronizar.
+- El código Authenticator es un segundo paso; NO es la contraseña maestra.
+- Un código temporal de 6 dígitos no cifra el cofre; la contraseña maestra sí.
+- PC y Android deben estar ambos en 3.5 o posterior: el protocolo v3 incluye los archivos.
+- La app se bloquea tras cinco minutos sin actividad; Android impide capturas de pantalla.
+
+ACTUALIZACIONES
+- En la app: Actualizaciones y ayuda > Comprobar versión publicada.
+- La consulta es voluntaria y no envía el cofre ni contraseñas a GitHub.
+- Código y descargas públicos: https://github.com/OscarD0823/Lankdea-APK/releases
+- Código original MIT; conserva LICENSE.txt y THIRD-PARTY-NOTICES.txt al redistribuir.
+- No hay instalación automática ni parches diferenciales. Se instala el paquete completo.
+
+VERIFICACIÓN
+manifest.json identifica versión, commit, tamaños y firma Android.
+SHA256SUMS.txt permite comparar las huellas mediante Get-FileHash -Algorithm SHA256.
+Las huellas detectan corrupción; NO certifican quién creó un archivo. Recibe el ZIP
+directamente del autor. El instalador Windows no tiene certificado Authenticode;
+puede aparecer un aviso de editor desconocido. No desactives antivirus ni protecciones.
+
+El ZIP solo contiene instalador, APK, manual, licencias y metadatos. Nunca contiene tu cofre,
+contraseña, claves privadas, credenciales GitHub ni código fuente del repositorio.

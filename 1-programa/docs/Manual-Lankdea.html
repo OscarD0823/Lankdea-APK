@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lankdea Local — Instalación, uso y actualizaciones</title>
+<style>
+:root{color-scheme:light;--ink:#28143d;--accent:#7137d9}*{box-sizing:border-box}
+body{margin:0;background:#f5f2fa;color:var(--ink);font:17px/1.65 system-ui,sans-serif}
+header{background:#25113d;color:white;padding:48px max(24px,calc((100vw - 880px)/2))}
+header p{color:#ddd0f3}h1{font-size:clamp(28px,5vw,44px);line-height:1.18}
+main{max-width:928px;margin:auto;padding:24px}section{background:white;padding:28px;margin:20px 0;border-radius:16px}
+h2{line-height:1.3;color:#5424a8}li{margin:12px 0}a{color:#6331bb}header a{color:#e9d5ff}
+.notice{border-left:5px solid #ad6500;background:#fff4df;padding:18px}.safe{border-left-color:#22855c;background:#eaf8f0}
+code{background:#eee8f6;padding:2px 5px;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:10px 24px}
+@media(max-width:520px){main{padding:12px}section{padding:20px}ol,ul{padding-left:22px}}
+@media print{body{background:white;font-size:11pt}header{padding:24px}main{padding:0}section{break-inside:avoid;margin:10px 0}nav{display:none}}
+</style>
+</head>
+<body>
+<header><p>LANKDEA · EDICIÓN LOCAL</p><h1>Tu cofre, en tus dispositivos.</h1>
+<p>Guía de instalación, uso y actualización para la serie 3.6. Autor: OscarD0823. Consulta la versión exacta en manifest.json.</p>
+<nav><a href="#instalar">Instalar</a><a href="#cofre">Usar</a><a href="#enlazar">Sincronizar</a><a href="#actualizar">Actualizar</a><a href="#ayuda">Resolver problemas</a></nav></header>
+<main>
+<section id="instalar"><h2>1. Instalar en Windows y Android</h2>
+<p>Extrae el ZIP completo. El manual funciona sin conexión y no carga recursos externos.</p>
+<h3>Windows 10/11 de 64 bits</h3><ol>
+<li>Abre <code>Lankdea-&lt;versión&gt;-Instalador-Windows-x64.exe</code>.</li>
+<li>Instala con tu usuario habitual. No necesita Python ni permisos de administrador.</li>
+<li>Se crea un acceso en el menú Inicio; el acceso en el Escritorio es opcional.</li>
+<li>La aplicación queda en <code>%LOCALAPPDATA%\Programs\Lankdea</code>. El cofre permanece separado en el perfil del usuario, normalmente <code>%APPDATA%\lankdea\lankdea_vault_v2.json</code>.</li></ol>
+<p class="notice">El instalador no tiene certificado de editor de Windows. Si aparece una advertencia, verifica que el ZIP venga del autor y compara SHA-256. Las huellas no son una firma de identidad. No desactives las protecciones.</p>
+<h3>Android 8.0 o superior · ARM64</h3><ol>
+<li>Copia la APK al celular por USB u otro medio privado.</li>
+<li>Abre la APK desde Archivos. Autoriza a esa aplicación a instalar aplicaciones desconocidas si Android lo solicita.</li>
+<li>Instala y abre Lankdea. Puedes revocar después ese permiso de instalación.</li></ol>
+<p class="notice">Si el ZIP dice PRUEBAS, la APK usa firma debug y no garantiza actualización sobre tu instalación anterior. No desinstales una app con un cofre real para resolver un conflicto de firma.</p></section>
+<section id="cofre"><h2>2. Crear y usar tu cofre</h2><ol>
+<li>Escribe una contraseña maestra de al menos 12 caracteres y confírmala.</li>
+<li>Usa <strong>Nueva credencial</strong> para usuarios y contraseñas; <strong>Nueva nota</strong> para texto privado; <strong>Guardar archivo</strong> para fotos, videos y documentos.</li>
+<li>Busca por título, servicio, usuario o contenido. Los controles permiten copiar, editar y eliminar.</li>
+<li>Pulsa <strong>Respaldo</strong> y guarda el archivo <code>.lankdea</code> en una unidad segura: incluye registros y archivos cifrados. Usa <strong>Configuración → Restaurar respaldo</strong> y la contraseña con que se creó para combinarlo con un cofre abierto.</li>
+<li>Al terminar pulsa <strong>Bloquear</strong>. El cofre también se bloquea al pasar a segundo plano o tras cinco minutos sin actividad.</li></ol>
+<p class="notice safe">La contraseña maestra no se guarda. No existe recuperación si se olvida. Hace que el texto cifrado pueda descifrarse correctamente; una clave equivocada es rechazada. El portapapeles se limpia a los 15 segundos y Android intenta marcarlo como sensible; el archivo usa AES-256-GCM y scrypt.</p>
+<p>Se admiten archivos de hasta 256 MiB, 128 archivos activos y 2 GiB cifrados por dispositivo. No se carga un video completo en memoria. El archivo original elegido no se modifica: sigue fuera del cofre. <strong>Exportar archivo</strong> crea una copia legible fuera del cifrado; no se abre automáticamente ni se crean temporales en claro. Al eliminar un registro se conserva un marcador para sincronizar; no es un borrado forense.</p>
+<p>En Android el selector del sistema permite elegir archivos sin dar acceso a todo el almacenamiento. Al volver, desbloquea otra vez el cofre para completar la acción.</p>
+<p>Una escena cinematográfica de cofre acompaña el inicio, la apertura y el cierre. Puede omitirse tocando la pantalla. En celular, tableta, ventana horizontal o monitor grande, el formulario se centra y los botones cambian automáticamente de columnas; si falta altura, la pantalla permite desplazarse.</p>
+<p>Desde <strong>Configuración → Idioma</strong> puedes elegir español, inglés, portugués, francés, alemán, italiano, polaco, turco, ruso, japonés, coreano o chino simplificado. La preferencia queda dentro del cofre cifrado.</p>
+<p>Al verificar la identidad, un asistente local confirma que el relicario está abierto. La bienvenida se puede activar o apagar en <strong>Configuración → Asistente al entrar</strong>. Es un audio incluido en la aplicación: no usa Internet, no lee registros y nunca pronuncia la contraseña maestra.</p>
+<h3>Authenticator</h3><p>En Configuración, activa Authenticator, escanea el QR y confirma un código. Después se ingresa con contraseña maestra y código temporal. El QR se genera en memoria y no queda una imagen con el secreto en el disco. El secreto del QR no es la contraseña: un código de seis dígitos tiene solo un millón de posibilidades, por lo que no es seguro usarlo como clave de cifrado sin conexión. Conserva la clave TOTP en un lugar seguro antes de cambiar de celular.</p>
+<p>En Android Lankdea bloquea capturas de pantalla y la vista de aplicaciones recientes. Las contraseñas permanecen ocultas al editar hasta que el usuario pulsa <strong>Mostrar</strong>.</p></section>
+<section id="enlazar"><h2>3. Sincronizar PC y celular sin nube</h2><ol>
+<li>Usa exactamente la misma contraseña maestra en ambos dispositivos.</li>
+<li>Conéctalos a una misma red Wi-Fi privada. Abre y desbloquea ambos cofres.</li>
+<li>En Windows pulsa <strong>PC + celular</strong>. En Android introduce el código del PC y pulsa <strong>Guardar y probar</strong>.</li>
+<li>Si no se detecta automáticamente, escribe la IP mostrada en el PC. Permite el acceso local de Lankdea en el firewall de la red privada.</li>
+<li>Android intenta sincronizar cada 8 segundos mientras ambos cofres están abiertos.</li></ol>
+<p>Por USB se necesita Android Platform-Tools (ADB), depuración USB y autorización del PC. En el celular pulsa <strong>Usar cable USB</strong>. Conectar un cable normal no activa por sí solo la sincronización.</p>
+<p>El cofre viaja cifrado por la red local y cada solicitud y respuesta se autentica con el código de enlace. No abras el puerto 8765 a Internet ni uses una Wi-Fi pública. Regenera el código si alguien no autorizado lo conoce.</p>
+<p class="notice">El protocolo v3 de la versión 3.5 incluye bloques de archivos y no se mezcla con clientes antiguos. Actualiza PC y celular a 3.5 o posterior. Una transferencia interrumpida conserva los bloques verificados y continúa al reconectar; un respaldo incompleto no se presenta como correcto.</p></section>
+<section id="actualizar"><h2>4. Actualizar conservando los datos</h2>
+<p>El programa y el cofre son archivos distintos. Las actualizaciones reemplazan el programa; no sustituyen el cofre ni cambian su contraseña.</p><ol>
+<li>Crea un respaldo cifrado y conserva tu contraseña maestra y acceso a Authenticator.</li>
+<li>Recibe del autor el ZIP nuevo o abre <strong>Actualizaciones y ayuda</strong> en la app.</li>
+<li><strong>Comprobar versión publicada</strong> consulta GitHub únicamente cuando tú lo solicitas. Nunca envía tus registros. Las descargas de Releases son públicas y no requieren una cuenta GitHub.</li>
+<li>Windows: cierra Lankdea, abre el nuevo instalador y usa el mismo usuario y carpeta. Si usabas el EXE portátil, el instalador conserva la misma carpeta de datos.</li>
+<li>Android: toca la nueva APK e instálala encima. Debe conservar <code>app.lankdea.lankdealocal</code>, la misma firma y un versionCode superior. Si la firma no coincide, detente; no borres los datos.</li>
+<li>Abre el cofre con la misma contraseña y verifica tus registros. Actualiza ambos dispositivos antes de volver a sincronizar.</li></ol>
+<p class="notice">Esta versión no instala actualizaciones silenciosamente ni aplica parches diferenciales. Descarga/recibe el paquete completo y confirma la instalación. Las antiguas APK debug pueden requerir una migración asistida a una firma estable; el autor debe conservar su clave privada.</p>
+<p>Las funciones de Firebase/Firestore se retiraron. Los cofres locales existentes siguen siendo compatibles. Los datos que solo estén en una antigua cuenta nube deben recuperarse con la versión anterior antes de cambiar; esta app no los descarga ni elimina.</p></section>
+<section id="ayuda"><h2>5. Si algo falla</h2><ul>
+<li><strong>No abre el cofre:</strong> comprueba contraseña, mayúsculas y teclado. No hay restablecimiento de la contraseña maestra.</li>
+<li><strong>Código TOTP incorrecto:</strong> activa hora automática en PC y celular y espera al siguiente código.</li>
+<li><strong>No sincroniza:</strong> deja ambos cofres desbloqueados, usa la misma contraseña, revisa el código, la IP y el firewall.</li>
+<li><strong>APK rechazada:</strong> comprueba Android 8+, ARM64 y la firma. No desinstales sin una copia verificada de tus datos.</li>
+<li><strong>No hay actualizaciones públicas:</strong> no significa que no tengas Internet; puede no existir todavía una Release oficial o faltar el ZIP.</li>
+<li><strong>Verificar un archivo:</strong> en PowerShell ejecuta <code>Get-FileHash .\nombre-del-archivo.exe -Algorithm SHA256</code> y compara con <code>SHA256SUMS.txt</code>.</li></ul>
+<p>El paquete contiene solo el instalador, la APK, este manual, licencias y metadatos. No contiene cofres, credenciales ni claves privadas.</p></section>
+<section><h2>Licencia y autor</h2><p>Autor: OscarD0823. Código original bajo MIT, incluido en LICENSE.txt. La fuente y la voz conservan sus licencias y atribuciones en THIRD-PARTY-NOTICES.txt. El código y las descargas están en <a href="https://github.com/OscarD0823/Lankdea-APK/releases">GitHub Releases</a>.</p></section>
+</main></body></html>

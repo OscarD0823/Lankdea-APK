@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lankdea-relicario"
+version = "3.6.0"
+license = "MIT"
+description = "Relicario cifrado local para Windows y Android con sincronización directa"
+authors = [{name = "OscarD0823"}]
+requires-python = ">=3.10"
+dependencies = [
+  "cryptography>=44",
+  "pyotp>=2.9",
+  "qrcode[pil]>=8",
+  "requests>=2.32",
+]
+
+[project.optional-dependencies]
+desktop = ["kivy>=2.3"]
+dev = ["pytest>=8.3"]
+
+[tool.setuptools.packages.find]
+include = ["lankdea*"]
+exclude = ["assets*", "legacy*", "scripts*", "tests*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra"
