@@ -300,16 +300,16 @@ jobs:
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: Lankdea-Paquete-Completo
-          path: package
+          path: 2-instaladores/ci-release-package
       - name: Verificar y preparar descargas individuales
         working-directory: 1-programa
         run: |
-          mapfile -t packages < <(find ../package -maxdepth 1 -type f -name '*.zip')
+          mapfile -t packages < <(find ../2-instaladores/ci-release-package -maxdepth 1 -type f -name '*.zip')
           test "${#packages[@]}" -eq 1
-          python -m scripts.extract_downloads "${packages[0]}" ../downloads
+          python -m scripts.extract_downloads "${packages[0]}" ../2-instaladores/ci-release-downloads
       - name: Publicar sin reemplazar una versión existente
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: ${{ github.ref_name }}
-        run: gh release create "$RELEASE_TAG" package/*.zip downloads/* --verify-tag --generate-notes --title "Lankdea Local $RELEASE_TAG"
+        run: gh release create "$RELEASE_TAG" 2-instaladores/ci-release-package/*.zip 2-instaladores/ci-release-downloads/* --verify-tag --generate-notes --title "Lankdea Local $RELEASE_TAG"
